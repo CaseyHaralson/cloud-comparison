@@ -8,7 +8,8 @@
     "docker": "docker build -t hello-world:latest .",
     "docker:run": "docker run -p 3000:3000 --name hello-world -d hello-world",
     "docker:stop": "docker stop hello-world && docker rm hello-world",
-    "zip": "zip -q -r container-source.zip ."
+    "zip": "npm run zip:clean && zip -q -r container-source.zip . -x '.vscode/*' -x 'build/*' -x 'node_modules/*'",
+    "zip:clean": "rm -f container-source.zip"
   },
   "devDependencies": {
     "@tsconfig/node18": "^2.0.1",
