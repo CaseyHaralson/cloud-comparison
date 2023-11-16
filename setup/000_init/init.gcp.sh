@@ -19,7 +19,7 @@ fi
 if [ $sourced = 0 ]
   then 
     echo ""
-    echo "  * * * * * WARNING * * * * * "
+    echo "  * * * * * NOTICE * * * * * "
     echo ""
     echo "This script needs to be run 'sourced' so it can export variables into the shell for other scripts to use."
     echo ""
