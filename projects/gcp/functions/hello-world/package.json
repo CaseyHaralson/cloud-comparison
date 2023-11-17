@@ -1,0 +1,20 @@
+{
+  "name": "hello-world",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "npm run clean && tsc",
+    "clean": "npx rimraf ./build",
+    "start": "functions-framework --target=helloWorld",
+    "zip": "npm run build && npm run zip:clean && zip -q -r function-source.zip ./build ./node_modules package.json",
+    "zip:clean": "npx rimraf function-source.zip && npm prune --omit=dev",
+    "gcp-build": ""
+  },
+  "dependencies": {
+    "@google-cloud/functions-framework": "^3.2.0"
+  },
+  "devDependencies": {
+    "@tsconfig/node18": "^2.0.1",
+    "rimraf": "^5.0.1",
+    "typescript": "^5.0.4"
+  }
+}
