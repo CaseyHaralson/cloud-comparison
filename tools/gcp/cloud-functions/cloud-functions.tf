@@ -24,7 +24,7 @@ resource "google_storage_bucket_object" "function_source" {
 #                   function
 
 resource "google_cloudfunctions_function" "function" {
-  name        = var.function_name
+  name        = "${var.function_name}${var.project_resource_naming_suffix}"
   region      = var.function_region
   description = var.function_description
 
