@@ -38,3 +38,13 @@ functionv2_available_memory = "2G"
 functionv2_available_cpu = 1
 functionv2_max_concurrency = 1
 # ===================================
+
+# ===================================
+#             app-engine
+app_service_name = "hello-world-app"
+app_runtime = "nodejs18"
+app_instance_class = "F4"
+app_max_instances = 1
+app_min_instances = 0
+app_max_concurrent_requests = 1
+# ===================================

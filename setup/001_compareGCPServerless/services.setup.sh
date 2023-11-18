@@ -83,9 +83,27 @@ cp function-source.zip $TEMP_DIR
 
 # copy terraform scripts to temp dir
 cd $TERRAFORM_FUNCTIONS_DIR
-cp ./* $TEMP_DIR
+cp -r ./* $TEMP_DIR
 cd $TERRAFORM_FUNCTIONSV2_DIR
-cp ./* $TEMP_DIR
+cp -r ./* $TEMP_DIR
+# =====================================
+
+# =====================================
+#             app engine
+
+echo ""
+echo "App engine step..."
+
+# run function zip
+# copy to temp dir
+cd $APPENGINE_DIR
+npm ci
+npm run zip
+cp app-source.zip $TEMP_DIR
+
+# copy terraform scripts to temp dir
+cd $TERRAFORM_APPENGINE_DIR
+cp -r ./* $TEMP_DIR
 # =====================================
 
 # =====================================
