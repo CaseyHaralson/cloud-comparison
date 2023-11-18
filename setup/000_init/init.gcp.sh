@@ -135,11 +135,28 @@ export GOOGLE_APPLICATION_CREDENTIALS="$TEMP_DIR/gcp_terraform_key.json"
 # =====================================
 #               apis
 
+echo ""
+echo "Enabling apis if needed..."
+
 # turn on the cloud resource manager api so terraform will work
 gcloud services enable cloudresourcemanager.googleapis.com
 
 # turn on the app engine api so app engine, firestore, datastore, etc will work
 gcloud services enable appengine.googleapis.com
+
+# turn on the other apis we will need so we don't end up trying to use them before they are ready...
+# sometimes google enables apis but not really all the way
+# and it takes a bit for everything to propagate
+gcloud services enable artifactregistry.googleapis.com
+gcloud services enable cloudbuild.googleapis.com
+gcloud services enable cloudfunctions.googleapis.com
+gcloud services enable cloudtrace.googleapis.com
+gcloud services enable redis.googleapis.com
+gcloud services enable run.googleapis.com
+gcloud services enable secretmanager.googleapis.com
+gcloud services enable servicenetworking.googleapis.com
+gcloud services enable sqladmin.googleapis.com
+gcloud services enable vpcaccess.googleapis.com
 # =====================================
 
 # =====================================
@@ -166,4 +183,8 @@ fi
 
 echo ""
 echo "Project setup complete."
+if [ $sourced != 0 ]; then
+  echo ""
+  echo "The shell has been loaded and can now be used in setup scripts."
+fi
 echo ""

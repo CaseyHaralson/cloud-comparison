@@ -1,3 +1,6 @@
+# apis to enable...
+# you also probably want to put these in the project init script
+# to lower the chance of the apis not being ready by the time they are needed
 resource "google_project_service" "services" {
   for_each           = toset([
     "appengine.googleapis.com",

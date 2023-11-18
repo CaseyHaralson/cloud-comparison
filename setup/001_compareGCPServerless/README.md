@@ -25,7 +25,6 @@ If you are on Windows and want to setup WSL, the following project can be used t
         - create an app engine instance and deploy a default app
 2. Use the same shell to navigate to the "setup/001_compareCGPServerless" folder and run the services setup script: `./services.setup.sh`
     - This will give you a chance to review the Terraform plan before applying. Say "yes" if you approve.
-    - If Terraform throws errors due to apis not being enabled, wait a minute and run the script again. The needed apis will be enabled in the Terraform plan, but Google Cloud (or Terraform) has issues.
     - The script will also ask if you want to build and deploy the latest container source to the cloud run service. Say "yes". There isn't a way to deploy code directly to cloud run with Terraform so the script will build and deploy to code as a separate step.
 
 ## Cleanup Steps
