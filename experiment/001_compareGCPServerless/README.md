@@ -67,3 +67,10 @@ The service variables can be changed from the Terraform variable files in this l
 
 - [variables](./tfvars/)
 
+### Service Testing
+
+Run hey against the service endpoint with some amount of concurrency: `hey -n 5000 -c [concurrency] [service endpoint]`
+
+### Price
+
+The project itself (without any services loaded) shouldn't generate any cost and the services themselves shouldn't generate any cost when they aren't being used.

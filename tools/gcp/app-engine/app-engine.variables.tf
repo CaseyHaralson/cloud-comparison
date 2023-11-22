@@ -22,7 +22,7 @@ variable "app_instance_class" {
   default     = "F1"
 }
 
-variable "app_entrypiont_shellcommand" {
+variable "app_entrypoint_shellcommand" {
   description = "The app entrypoint command"
   type        = string
   default     = "node ."

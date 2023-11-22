@@ -30,7 +30,7 @@ resource "google_app_engine_standard_app_version" "app" {
   instance_class = var.app_instance_class
 
   entrypoint {
-    shell = var.app_entrypiont_shellcommand
+    shell = var.app_entrypoint_shellcommand
   }
 
   deployment {
