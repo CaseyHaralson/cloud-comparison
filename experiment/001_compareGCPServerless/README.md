@@ -1,6 +1,6 @@
 # Compare GCP Serverless Web Services
 
-This goes along with the blog article here: https://blog.caseyharalson.com/posts/post
+This goes along with the blog article here: https://blog.caseyharalson.com/posts/gcp-serverless-comparison
 
 I make no guarantees about the correctness of this code.
 Use with your own responsibility.
@@ -71,6 +71,12 @@ The service variables can be changed from the Terraform variable files in this l
 
 Run hey against the service endpoint with some amount of concurrency: `hey -n 5000 -c [concurrency] [service endpoint]`
 
-### Price
+### Cost
 
 The project itself (without any services loaded) shouldn't generate any cost and the services themselves shouldn't generate any cost when they aren't being used.
+
+During my testing (over the course of 10-15 days):
+
+- Cloud Storage generated around $0.08 in cost
+- Cloud Functions generated around $0.29 in cost
+- Cloud Run generated around $0.01 in cost
