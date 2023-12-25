@@ -185,6 +185,6 @@ echo ""
 echo "Project setup complete."
 if [ $sourced != 0 ]; then
   echo ""
-  echo "The shell has been loaded and can now be used in setup scripts."
+  echo "The shell has been loaded and can now be used in setup/destroy scripts."
 fi
 echo ""

@@ -32,7 +32,7 @@ if [ "$CLOUD_PLATFORM" = "gcp" ]
         echo ""
         echo "The init.gcp script hasn't been run in this shell yet..."
         echo ""
-        echo "In this terminal, navigate to the 000_init pipeline and run the init.gcp.sh script."
+        echo "In this terminal, navigate to the 000_init experiment folder and run the init.gcp.sh script."
         echo ""
         echo "Run the script like '. ./init.gcp.sh' with the dot-space at the beginning so the variables are exported into this shell."
         VALID=false
