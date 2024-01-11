@@ -4,7 +4,10 @@
 set -e
 
 # include variables
-. ./infra.variables.sh
+FILENAME=$(basename "$0")
+FILENAME_SUFFIX='.setup.sh'
+FILENAME_PREFIX=`echo $FILENAME | sed 's#'"${FILENAME_SUFFIX}"'##'`
+. ./${FILENAME_PREFIX}.variables.sh  # sourced
 
 # =====================================
 #             pre-setup
@@ -49,25 +52,20 @@ fi
 # =====================================
 
 # =====================================
-#             networking
+#             cloud run
 
 echo ""
-echo "Networking step..."
+echo "Cloud run step..."
+
+# run function zip
+# copy to temp dir
+cd $CONTAINER_DIR
+npm run zip
+cp container-source.zip $TEMP_DIR
 
 # copy terraform scripts to temp dir
-cd $TERRAFORM_NETWORK_DIR
-cp ./* $TEMP_DIR
-# =====================================
-
-# =====================================
-#             cloud sql
-
-echo ""
-echo "Cloud sql step..."
-
-# copy terraform scripts to temp dir
-cd $TERRAFORM_CLOUDSQL_DIR
-cp ./* $TEMP_DIR
+cd $TERRAFORM_CLOUDRUN_DIR
+cp -r ./* $TEMP_DIR
 # =====================================
 
 # =====================================

@@ -4,7 +4,10 @@
 set -e
 
 # include variables
-. ./main.variables.sh  
+FILENAME=$(basename "$0")
+FILENAME_SUFFIX='.setup.sh'
+FILENAME_PREFIX=`echo $FILENAME | sed 's#'"${FILENAME_SUFFIX}"'##'`
+. ./${FILENAME_PREFIX}.variables.sh  # sourced
 
 # =====================================
 #             pre-setup
@@ -15,7 +18,7 @@ echo "Pre-setup step..."
 # check to make sure init was run
 cd $INIT_DIR
 export VERIFY_SCRIPT_ARGUMENTS="gcp"
-. ./verify.sh # use . before calling the script to export any variables
+. ./verify.sh # sourced
 if [ $VERIFY_SCRIPT_RETURN = false ]; then return 1; fi
 
 # make temp directory
@@ -49,20 +52,14 @@ fi
 # =====================================
 
 # =====================================
-#             cloud run
+#             cloud sql
 
 echo ""
-echo "Cloud run step..."
-
-# run function zip
-# copy to temp dir
-cd $CONTAINER_DIR
-npm run zip
-cp container-source.zip $TEMP_DIR
+echo "Cloud sql step..."
 
 # copy terraform scripts to temp dir
-cd $TERRAFORM_CLOUDRUN_DIR
-cp -r ./* $TEMP_DIR
+cd $TERRAFORM_CLOUDSQL_DIR
+cp ./* $TEMP_DIR
 # =====================================
 
 # =====================================

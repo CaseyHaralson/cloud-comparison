@@ -1,18 +1,18 @@
 #!/bin/sh
 
 P_INDEX=003
-P_SUFFIX='infra'
+P_SUFFIX='network'
 PIPELINE="${P_INDEX}.${P_SUFFIX}"_gcpCloudRunCloudSql
 STARTING_DIR=$(pwd)
+PROJECT_ROOT_DIR=$STARTING_DIR/../..
 TEMP_DIR=$STARTING_DIR/temp."$P_SUFFIX"
 TOOL_SCRIPTS=$TEMP_DIR/scripts
-INIT_DIR=$STARTING_DIR/../000_init
+INIT_DIR=$PROJECT_ROOT_DIR/experiment/000_init
 TERRAFORM_VARIABLES_DIR=$STARTING_DIR/tfvars
 TERRAFORM_VARIABLES_FILE=${P_SUFFIX}.tfvars
 
-TERRAFORM_BASE_DIR=$STARTING_DIR/../../tools/gcp/base
-TERRAFORM_NETWORK_DIR=$STARTING_DIR/../../tools/gcp/network
-TERRAFORM_CLOUDSQL_DIR=$STARTING_DIR/../../tools/gcp/cloud-sql
+TERRAFORM_BASE_DIR=$PROJECT_ROOT_DIR/tools/gcp/base
+TERRAFORM_NETWORK_DIR=$PROJECT_ROOT_DIR/tools/gcp/network
 
 # set the state prefix so these changes don't overlap with anything else
 TERRAFORM_STATE_PREFIX="terraform/state/$PIPELINE"
