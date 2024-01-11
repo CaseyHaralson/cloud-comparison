@@ -1,0 +1,10 @@
+# https://cloud.google.com/build/docs/configuring-builds/create-basic-configuration
+
+# this doesn't work
+# cloud build couldn't figure out how to find this file
+
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-f', './devops/Dockerfile', '-t', '${_TAG}', '.']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', '${_REGISTRY}']

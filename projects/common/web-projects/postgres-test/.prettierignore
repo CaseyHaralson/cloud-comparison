@@ -1,0 +1,11 @@
+**/node_modules
+**/build
+
+*.json
+*.md
+*.yml
+*.yaml
+
+.dockerignore
+.gitignore
+.prettierignore
