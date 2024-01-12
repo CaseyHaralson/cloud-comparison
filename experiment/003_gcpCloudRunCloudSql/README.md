@@ -20,5 +20,10 @@ For a basic overview of the steps, take a look at [the README from the last expe
 6. Navigate to the "temp.cloudrun/scripts" folder and run the cloud-run db creation job: `./cloud-run.job.db-create.sh`
     - This takes a minute or so to complete. So wait for it to complete in the GCP console before moving on.
 7. While still in the cloud run scripts folder, run the cloud-run db seed job: `./cloud-run.job.db-seed.sh`
-8. 
+8. Move back up to the "experiment/003_gcpCloudRunCloudSql" folder and rerun the cloudrun setup script: `./cloudrun.setup.sh`
+    - The database and data should be created and ready for the service to connect.
+    - You don't need to say "yes" when the script asks if you want to build and deploy the latest container source. We just need a new revision to trigger now that the database is ready.
+
+
+
 

@@ -160,6 +160,16 @@ gcloud services enable vpcaccess.googleapis.com
 # =====================================
 
 # =====================================
+#     default service account roles
+
+echo ""
+echo "Adding policy bindings to the default compute service account..."
+
+COMPUTE_SERVICE_ACCOUNT=`gcloud iam service-accounts list --format="value(email)" --filter=name:"compute@"`
+gcloud projects add-iam-policy-binding "$GCP_PROJECT_ID" --member=serviceAccount:"$COMPUTE_SERVICE_ACCOUNT" --role='roles/cloudtrace.agent' --no-user-output-enabled
+# =====================================
+
+# =====================================
 #             app engine
 
 AE_DEFAULT_APP_DIR=$STARTING_DIR/../../projects/gcp/app-engine/hello-world

@@ -1,6 +1,6 @@
 import {NodeSDK} from '@opentelemetry/sdk-node';
 import {ConsoleSpanExporter} from '@opentelemetry/sdk-trace-node';
-import {BatchSpanProcessor} from '@opentelemetry/sdk-trace-base';
+import {BatchSpanProcessor, SimpleSpanProcessor} from '@opentelemetry/sdk-trace-base';
 import {getNodeAutoInstrumentations} from '@opentelemetry/auto-instrumentations-node';
 import {GracefulShutdown} from 'graceful-sd';
 import {TraceExporter as GoogleSpanExporter} from '@google-cloud/opentelemetry-cloud-trace-exporter';
@@ -11,7 +11,8 @@ import {pino} from 'pino';
 const ENABLE_INSTRUMENTATION = process.env.ENABLE_INSTRUMENTATION || 'false';
 if (ENABLE_INSTRUMENTATION.toLowerCase() === 'true') {
   const traceExporter = getSpanExporter();
-  const spanProcessor = new BatchSpanProcessor(traceExporter);
+  // const spanProcessor = new BatchSpanProcessor(traceExporter);
+  const spanProcessor = new SimpleSpanProcessor(traceExporter);
   const opentelemetrySDK = new NodeSDK({
     traceExporter: traceExporter,
     spanProcessor: spanProcessor,
@@ -55,10 +56,15 @@ if (ENABLE_INSTRUMENTATION.toLowerCase() === 'true') {
  * @returns a SpanExporter based on the environment variable
  */
 function getSpanExporter() {
+  // create a logger (same notes as above)
+  const log = pino().child({module: 'Instrumentation'});
+
   const DESIRED_EXPORTER = process.env.OPENTELEMETRY_SPAN_EXPORTER || '';
   if (DESIRED_EXPORTER.toLowerCase() === 'gcp') {
+    log.info('Using GoogleSpanExporter as desired OpenTelemetry span exporter...');
     return new GoogleSpanExporter();
   } else {
+    log.info('Using ConsoleSpanExporter as desired OpenTelemetry span exporter...');
     return new ConsoleSpanExporter();
   }
 }
