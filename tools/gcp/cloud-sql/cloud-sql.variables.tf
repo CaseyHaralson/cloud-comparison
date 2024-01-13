@@ -58,3 +58,15 @@ variable "cloudsql_server_replicas" {
   }))
   default     = []
 }
+
+variable "cloudsql_server_disk_size" {
+  description = "The cloud sql server disk size in GB"
+  type        = number
+  default     = 10
+}
+
+variable "cloudsql_server_tier" {
+  description = "The cloud sql server machine size"
+  type        = string
+  default     = "db-f1-micro" # db-f1-micro, db-g1-small, db-n1-standard-1, db-perf-optimized-N-2, etc...
+}

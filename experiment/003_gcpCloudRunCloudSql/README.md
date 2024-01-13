@@ -17,13 +17,21 @@ For a basic overview of the steps, take a look at [the README from the last expe
 4. Run the cloudsql setup script: `./cloudsql.setup.sh`
 5. Run the cloudrun setup script: `./cloudrun.setup.sh`
     - Say "yes" when the script asks if you want to build and deploy the latest container source to the cloud run service. We still need to create the database before the service will be ready, but this will allow the db jobs to be run.
-6. Navigate to the "temp.cloudrun/scripts" folder and run the cloud-run db creation job: `./cloud-run.job.db-create.sh`
+6. Navigate to the "temp.cloudrun/scripts" folder and run the cloud-run db creation script: `./cloud-run.job.db-create.sh`
     - This takes a minute or so to complete. So wait for it to complete in the GCP console before moving on.
-7. While still in the cloud run scripts folder, run the cloud-run db seed job: `./cloud-run.job.db-seed.sh`
+7. While still in the cloud run scripts folder, run the cloud-run db seed script: `./cloud-run.job.db-seed.sh`
 8. Move back up to the "experiment/003_gcpCloudRunCloudSql" folder and rerun the cloudrun setup script: `./cloudrun.setup.sh`
     - The database and data should be created and ready for the service to connect.
     - You don't need to say "yes" when the script asks if you want to build and deploy the latest container source. We just need a new revision to trigger now that the database is ready.
 
+## Cleanup
 
+Delete the GCP project or perform the following steps:
+
+1. Navigate to the "temp.cloudrun/scripts" folder and run the cloud-run db drop script: `./cloud-run.job.db-drop.sh`
+2. Move back up to the "experiment/003_gcpCloudRunCloudSql" folder and run the cleanup scripts in the following order:
+    1. Cloud Run: `./cloudrun.destroy.sh`
+    2. Cloud Sql: `./cloudsql.destroy.sh`
+    3. Network: `./network.destroy.sh`
 
 

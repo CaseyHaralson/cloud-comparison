@@ -21,7 +21,7 @@ variable "vpc_serverless_connectors_and_subnets" {
     name          = string
     region        = string
     starting_ip   = string
-    machine_type  = optional(string, "e2-micro")
+    machine_type  = optional(string, "f1-micro") # f1-micro, e2-micro, e2-standard-4
     min_instances = optional(number, 2)
     max_instances = optional(number, 3)
   }))

@@ -15,6 +15,11 @@ module "cloudsql_server" {
   project_id          = data.google_project.current.project_id
   zone                = var.cloudsql_server_zone
   deletion_protection = var.cloudsql_server_deletion_protection
+  edition             = "ENTERPRISE"
+  disk_type           = "PD_SSD"
+  disk_size           = var.cloudsql_server_disk_size
+  tier                = var.cloudsql_server_tier
+  
 
   user_name     = data.google_secret_manager_secret_version_access.cloudsql_user.secret_data
   user_password = data.google_secret_manager_secret_version_access.cloudsql_password.secret_data

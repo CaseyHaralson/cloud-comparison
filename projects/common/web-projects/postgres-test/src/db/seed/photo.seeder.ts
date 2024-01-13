@@ -10,6 +10,7 @@ export default class PhotoSeeder implements Seeder {
     // const repo = dataSource.getRepository(Photo);
 
     const photoFactory = await factoryManager.get(Photo);
-    await photoFactory.saveMany(1000);
+    await photoFactory.saveMany(1);
+    // await photoFactory.saveMany(1000);
   }
 }

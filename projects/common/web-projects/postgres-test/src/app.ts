@@ -43,7 +43,8 @@ app.get('/photos', async (req, res, next) => {
 
 app.get('/photos/update-views', async (req, res, next) => {
   catchAndPassErrors(next, async () => {
-    const id = getRandomPhotoId();
+    // const id = getRandomPhotoId();
+    const id = 1;
     await updatePhotoViews(id);
     res.send(`photo updated: ${id}`);
   });
