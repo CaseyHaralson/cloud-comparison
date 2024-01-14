@@ -8,7 +8,7 @@ data "google_secret_manager_secret_version_access" "cloudsql_password" {
 
 module "cloudsql_server" {
   source = "GoogleCloudPlatform/sql-db/google//modules/postgresql"
-  version = "15.0.0"
+  version = "16.1.0"
   
   database_version    = var.cloudsql_database_version
   name                = "${var.cloudsql_server_name}${var.project_resource_naming_suffix}"
