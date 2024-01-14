@@ -68,5 +68,5 @@ variable "cloudsql_server_disk_size" {
 variable "cloudsql_server_tier" {
   description = "The cloud sql server machine size"
   type        = string
-  default     = "db-f1-micro" # db-f1-micro, db-g1-small, db-n1-standard-1, db-perf-optimized-N-2, etc...
+  default     = "db-f1-micro" # db-f1-micro, db-g1-small, db-custom-cpu-memory, db-custom-1-3840, etc...
 }
