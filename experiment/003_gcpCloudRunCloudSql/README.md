@@ -16,7 +16,8 @@ For a basic overview of the steps, take a look at [the README from the last expe
 3. Run the network setup script: `./network.setup.sh`
 4. Run the cloudsql setup script: `./cloudsql.setup.sh`
 5. Run the cloudrun setup script: `./cloudrun.setup.sh`
-    - Say "yes" when the script asks if you want to build and deploy the latest container source to the cloud run service. We still need to create the database before the service will be ready, but this will allow the db jobs to be run.
+    - Say "yes" when the script asks if you want to build and deploy the latest container source to the cloud run service. 
+    - We still need to create the database before the service will be ready, but this step will allow the db jobs to be run.
 6. Navigate to the "temp.cloudrun/scripts" folder and run the cloud-run db creation script: `./cloud-run.job.db-create.sh`
     - This takes a minute or so to complete. So wait for it to complete in the GCP console before moving on.
 7. While still in the cloud run scripts folder, run the cloud-run db seed script: `./cloud-run.job.db-seed.sh`
@@ -34,4 +35,30 @@ Delete the GCP project or perform the following steps:
     2. Cloud Sql: `./cloudsql.destroy.sh`
     3. Network: `./network.destroy.sh`
 
+## Experiment
 
+### Service Endpoints
+
+After running the cloudrun setup script, the last stage of the script will be to output the Terraform outputs.
+Look for the following outputs for the service endpoints:
+
+- Cloud Run: `cloudrun_service_uris`
+
+The endpoints for connecting to the database are:
+
+- `[service url]/photos`
+- `[service url]/photos/update-views`
+
+### Project Code
+
+The project code lives in the following locations:
+
+- [Cloud Run](../../projects/common/web-projects/postgres-test/)
+
+### Terraform Variables
+
+The different terraform variables for the scripts can be edited here:
+
+- [network variables](./tfvars/network.tfvars)
+- [cloudsql variables](./tfvars/cloudsql.tfvars)
+- [cloudrun variables](./tfvars/cloudrun.tfvars)
