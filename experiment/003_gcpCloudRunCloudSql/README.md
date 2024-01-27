@@ -62,3 +62,7 @@ The different terraform variables for the scripts can be edited here:
 - [network variables](./tfvars/network.tfvars)
 - [cloudsql variables](./tfvars/cloudsql.tfvars)
 - [cloudrun variables](./tfvars/cloudrun.tfvars)
+
+### Service Testing
+
+Run "hey" against the service endpoint with some amount of concurrency: `hey -z 5m -c [concurrency] [service endpoint]`
